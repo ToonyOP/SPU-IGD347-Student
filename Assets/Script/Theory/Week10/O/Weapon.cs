@@ -5,9 +5,10 @@ namespace Theory.Week10
 {
     public enum WeaponType
     {
-        Sword,
+        Knife,
         Bow,
-        Gun
+        Gun,
+        Axe
     }
 
     public class Weapon : MonoBehaviour

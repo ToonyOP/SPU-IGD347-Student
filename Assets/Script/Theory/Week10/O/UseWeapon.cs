@@ -8,19 +8,19 @@ public class UseWeapon : MonoBehaviour
     void Start()
     {
         Debug.Log("---- Bad Calculate Damage ----");
-        Weapon sword = new Weapon(WeaponType.Sword, 10);
-        Debug.Log($"Sword Damage: {BadCalculateDamage(sword)}"); // Output: Sword Damage: 15
+        Weapon sword = new Weapon(WeaponType.Knife, 10);
+        //Debug.Log($"Sword Damage: {GoodCalculateDamage((IBonusWeapon)Knife)}"); // Output: Sword Damage: 15
 
     }
     public int GoodCalculateDamage(IBonusWeapon weapon)
     {
-        return 0; // เรียกใช้เมธอดจาก Interface โดยตรง
+        return weapon.GetDamage();
     }
 
     public int BadCalculateDamage(Weapon weapon)
     {
         int totalDamage = weapon.BaseDamage;
-        if (weapon.Type == WeaponType.Sword)
+        if (weapon.Type == WeaponType.Knife)
         {
             totalDamage += 5; // โบนัสดาบ
         }
@@ -33,6 +33,10 @@ public class UseWeapon : MonoBehaviour
             totalDamage += 10; // โบนัสปืน
         }
         // ถ้าเพิ่ม WeaponType.Axe ต้องมาเพิ่ม else if ตรงนี้
+        else if (weapon.Type == WeaponType.Axe)
+        {
+            totalDamage += 15; 
+        }
         return totalDamage;
     }
     
